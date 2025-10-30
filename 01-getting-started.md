@@ -1,26 +1,24 @@
----
-
 ## 📘 `01-getting-started.md`
 
 ````markdown
-# 🏁 Getting Started with Git & GitHub
+🏁 Getting Started with Git & GitHub
 
 Welcome!  
-In this section, you’ll learn what **Git** and **GitHub** are, how to install Git, and how to create your first repository.
+In this section, you’ll learn what Git and GitHub are, how to install Git, and how to create your first repository.
 
----
+````
 
-## 🧩 What is Git?
+🧩 <b>What is Git?</b>
 
-**Git** is a version control system that helps developers track changes in code, revert to previous versions, and collaborate with others.
+Git is a version control system that helps developers track changes in code, revert to previous versions, and collaborate with others.
 
 Think of it like a *time machine* for your project — you can go back in time, see who changed what, and merge everyone’s work easily.
 
 ---
 
-## 🌐 What is GitHub?
+🌐 <b>What is GitHub?</b>
 
-**GitHub** is an online platform that hosts Git repositories.  
+GitHub is an online platform that hosts Git repositories.  
 It allows developers to:
 - Store their projects in the cloud
 - Collaborate with others
@@ -32,20 +30,20 @@ It allows developers to:
 
 ---
 
-## ⚙️ Installing Git
+⚙️ <b>Installing Git</b>
 
-### 🪟 On Windows
+🪟 On Windows
 1. Visit [git-scm.com/downloads](https://git-scm.com/downloads)
 2. Download the Windows installer
 3. Follow the setup wizard and accept defaults
 4. After installation, open **Git Bash**
 
-### 🍎 On macOS
+🍎 On macOS
 ```bash
 brew install git
 ````
 
-### 🐧 On Linux (Ubuntu/Debian)
+ On Linux (Ubuntu/Debian)
 
 ```bash
 sudo apt install git
@@ -53,7 +51,7 @@ sudo apt install git
 
 ---
 
-## 🧠 Configure Git (Important Step)
+🧠 Configure Git (Important Step)
 
 Before using Git, set your username and email.
 These details are used to tag your commits.
@@ -63,7 +61,7 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-✅ **Expected Output:**
+✅ Expected Output:
 *(No output if successful)*
 
 To verify:
