@@ -1,4 +1,4 @@
-## 📘 `01-getting-started.md`
+## 📘 `Getting-started.md`
 
 ````markdown
 🏁 Getting Started with Git & GitHub
@@ -175,8 +175,4 @@ origin  https://github.com/<username>/my-first-repo.git (push)
 
 ---
 
-🎯 **Next Chapter:** [Basic Git Commands →](./02-git-commands.md)
-
-```
-
----
+🎯 **Next Chapter:** [Basic Git Commands →](./Git-Basics.md)
