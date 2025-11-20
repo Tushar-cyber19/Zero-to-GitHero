@@ -271,6 +271,6 @@ Together, they make GitHub a complete project-management and collaboration platf
 
 ---
 
-## 🚀 Next Step
+➡️ **Next Step:** [GitHub CLI (Command-Line Power)](GitHub%20CLI%20(Command-Line%20Power).md) to streamline GitHub workflows directly from your terminal.
 
 Continue to **GitHub CLI – Command-Line Power ⚡** 

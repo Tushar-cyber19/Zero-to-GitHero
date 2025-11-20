@@ -215,6 +215,6 @@ Both commands keep your workflow clean, flexible, and professional! 💼
 
 ---
 
-## 🚀 Next Step
+➡️ **Next Step:** [Git Rebase & Cherry-pick](Git%20Rebase%20&%20Cherry-pick.md) to master advanced Git techniques for clean history.
 
 Continue to **Git Rebase & Cherry-pick** 

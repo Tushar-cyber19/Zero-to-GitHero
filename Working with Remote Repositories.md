@@ -283,7 +283,4 @@ You’ve learned how to:
 
 ---
 
-## 🚀 Next Step
-
-Continue to **Exploring GitHub Features** 💫
-You’ll explore forks, pull requests, issues, discussions, and more to collaborate like a true GitHub pro!
+➡️ **Next Step:** [Exploring GitHub Features](Exploring%20GitHub%20Features.md) to discover powerful tools for collaboration and project management.

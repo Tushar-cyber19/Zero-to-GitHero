@@ -312,3 +312,5 @@ Keep exploring open-source, contribute often, and stay curious 💫
 Your **GitHub profile** is your digital portfolio — make every commit count 🖋️
 
 ---
+
+➡️ **Next Step:** [README](README.md) to review the complete guide overview and contribute to the project.

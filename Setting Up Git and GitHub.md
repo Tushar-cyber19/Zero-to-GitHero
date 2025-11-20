@@ -219,4 +219,4 @@ Your first commit will appear on your GitHub repository page 🎉
 🎉 Congratulations! You’ve successfully set up Git and connected it with GitHub.
 Now you’re ready to start version-controlling your projects 🚀
 
-Next up → **Git Commands Explained** 💡
+➡️ **Next Step:** [Git Commands Explained](Git%20Commands%20Explained.md) to learn essential Git commands for daily use.

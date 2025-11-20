@@ -286,7 +286,7 @@ You’ve mastered:
 
 ---
 
-## 🚀 Next Step
+➡️ **Next Step:** [Working with Remote Repositories](Working%20with%20Remote%20Repositories.md) to connect your local projects to GitHub and collaborate remotely.
 
 Head to **Working with Remote Repositories** 🌍
 You’ll learn how to connect, fetch, and sync your local and remote repos like a pro.
