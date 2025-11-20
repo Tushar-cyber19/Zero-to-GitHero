@@ -1,7 +1,7 @@
 # 🚀 Zero-to-GitHero: Your Ultimate Git & GitHub Guide
 
 [![GitHub stars](https://img.shields.io/github/stars/Tushar-cyber19/Zero-to-Githero?style=social)](https://github.com/Tushar-cyber19/Zero-to-GitHero)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Tushar-cyber19/Zero-to-GitHero/license)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Tushar-cyber19/Zero-to-GitHero/issues)
 
 > **From Zero to Hero: Master Git and GitHub with Step-by-Step Tutorials, Real-World Examples, and Pro Tips!** 💪
@@ -143,7 +143,7 @@ We welcome contributions! This guide thrives on community input.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](License) file for details.
 
 ---
 
