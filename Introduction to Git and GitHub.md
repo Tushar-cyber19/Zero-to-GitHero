@@ -107,5 +107,5 @@ git pull origin main
 
 ---
 
-➡️ **Next Step:** Move to **Setting-up-git-and-github.md** to learn how to install Git and connect it with GitHub.
+➡️ **Next Step:** [Setting Up Git and GitHub](Setting%20Up%20Git%20and%20GitHub.md) to get started with installation and configuration.
 

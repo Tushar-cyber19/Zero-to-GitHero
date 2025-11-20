@@ -341,7 +341,4 @@ Now you can:
 
 ---
 
-## 🚀 Next Step
-
-Continue to **Branching and Merging** 🌳
-You’ll learn how to work on multiple features, merge them, and handle conflicts like a pro 👨‍💻
+➡️ **Next Step:** [Branching and Merging](Branching%20and%20Merging.md) to learn how to work on multiple features, merge them, and handle conflicts like a pro.

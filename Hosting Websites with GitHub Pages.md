@@ -225,6 +225,6 @@ It’s a must-have skill for every developer 💪
 
 ---
 
-## 🚀 Next Step
+➡️ **Next Step:** [Git Stash & Revert](Git%20Stash%20&%20Revert.md) to master temporary changes and undoing commits safely.
 
 Continue to **Troubleshooting Git & GitHub Issues 🧩** 

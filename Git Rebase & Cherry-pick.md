@@ -245,6 +245,6 @@ Both make you look like a **Git wizard 🧙‍♂️** who keeps the repo neat a
 
 ---
 
-## 🚀 Next Step
+➡️ **Next Step:** [Troubleshooting Git & GitHub Issues](Troubleshooting%20Git%20&%20GitHub%20Issues.md) to resolve common problems and errors.
 
 Continue to **Working with GitHub Issues & Pull Requests** 

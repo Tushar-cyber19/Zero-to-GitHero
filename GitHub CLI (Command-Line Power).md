@@ -354,6 +354,4 @@ No browser, no clicks — just pure **command-line power**! ⚡💻
 
 ---
 
-## 🚀 Next Step
-
-Continue to **Best Practices & Professional Workflow 🧭** 
+➡️ **Next Step:** [Hosting Websites with GitHub Pages](Hosting%20Websites%20with%20GitHub%20Pages.md) to host your projects live on GitHub Pages.
