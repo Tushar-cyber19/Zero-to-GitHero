@@ -222,6 +222,4 @@ Open-source projects encourage developers worldwide to contribute.
 
 ---
 
-➡️ **Next Step:** [Working with GitHub Issues & Pull Requests](Working%20with%20GitHub%20Issues%20&%20Pull%20Requests.md) to master collaboration tools for efficient project management.
-
-Continue to **Hosting Websites with GitHub Pages** 💫
+➡️ **Next Step:** [Working with GitHub Issues & Pull Requests](Working%20with%20GitHub%20Issues%20&%20Pull%20Requests.md) — Master issue tracking, PR reviews, and team collaboration.

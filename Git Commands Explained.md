@@ -1,344 +1,374 @@
 # 🧠 Git Commands with Examples
 
-## 🎯 Topic: Basic Git Commands for Daily Use
+## 🎯 Topic: Essential Git Commands for Daily Use
+
+Welcome to the command center of **Zero-to-GitHero**! 🚀 This guide covers the essential Git commands you will use every day as a developer — featuring both classic commands and **modern Git standards** (`git switch`, `git restore`).
 
 ---
 
 ## 🌟 What You’ll Learn
 
-By the end of this file, you’ll understand and practice:
-✅ Initializing and checking repo status
-✅ Adding and committing changes
-✅ Creating, switching, and merging branches
-✅ Connecting to remotes
-✅ Pushing and pulling updates
-✅ Undoing mistakes safely
+By the end of this guide, you’ll master:
+- ✅ The 4 areas of Git (Working Tree, Staging, Local Repo, Remote Repo)
+- ✅ Initializing and checking repository status (`git init`, `git status -sb`)
+- ✅ Staging changes precisely (`git add`, `git add -p`)
+- ✅ Committing and inspecting history (`git commit`, `git log`, `git show`)
+- ✅ Modern branch navigation (`git switch`, `git switch -c`)
+- ✅ Moving and removing files cleanly (`git mv`, `git rm`)
+- ✅ Comparing changes (`git diff`, `git diff --staged`)
+- ✅ Safely undoing unstaged and staged changes (`git restore`, `git reset`)
+- ✅ Synchronizing with remotes (`git remote`, `git push`, `git pull`, `git clone`)
+
+---
+
+## 🗺️ Visualizing the Git Architecture
+
+Before typing commands, understand how your files flow through the four states in Git:
+
+```mermaid
+flowchart LR
+    A["📂 Working Directory<br/>(Your edited files)"] -->|git add| B["📋 Staging Area (Index)<br/>(Prepared for commit)"]
+    B -->|git commit| C["💾 Local Repository<br/>(Committed history / HEAD)"]
+    C -->|git push| D["☁️ Remote Repository<br/>(GitHub / GitLab)"]
+    D -->|git fetch / git pull| C
+    B -->|git restore --staged| A
+    C -->|git restore| A
+```
 
 ---
 
 ## ⚙️ 1. `git init` — Initialize a Repository
 
-Creates a new local Git repository in your current directory.
+Creates a brand new local Git repository in your current project folder.
 
 ```bash
 git init
 ```
 
-✅ **Result:**
-
+✅ **Output Example:**
+```text
+Initialized empty Git repository in /projects/my-app/.git/
 ```
-Initialized empty Git repository in /path/to/folder/.git/
-```
 
-📘 *Use this command in the folder where your project is stored.*
+💡 **Pro Tip:** In modern Git, you can set your default branch name on initialization:
+```bash
+git init -b main
+```
 
 ---
 
 ## 🧐 2. `git status` — Check Repository Status
 
-Shows which files are changed, staged, or untracked.
+Displays which files have been modified, staged, or are currently untracked.
 
 ```bash
 git status
 ```
 
-✅ **Output Example:**
-
-```
+✅ **Standard Output:**
+```text
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         index.html
 ```
 
----
-
-## 🗃️ 3. `git add` — Stage Files for Commit
-
-Adds files to the staging area before committing.
+### ⚡ Shortcut: Concise Status (`-sb`)
+For a fast, compact view showing the current branch and status flags:
 
 ```bash
-git add filename.txt
+git status -sb
 ```
 
-✨ Add all files:
+✅ **Concise Output:**
+```text
+## main
+?? index.html
+ M style.css
+A  app.js
+```
+*(Legend: `??` = untracked, `M` = modified, `A` = added/staged)*
 
+---
+
+## 🗃️ 3. `git add` — Stage Changes for Commit
+
+Moves changes from your **Working Directory** to the **Staging Area (Index)**.
+
+### Stage a specific file:
+```bash
+git add index.html
+```
+
+### Stage all modified and new files:
 ```bash
 git add .
 ```
 
-✅ **Result:**
+### 🎯 Pro Technique: Interactive Hunk Staging (`-p`)
+Need to commit only part of a file rather than all your changes at once? Use patch mode:
 
+```bash
+git add -p script.js
 ```
-Changes to be committed:
-  new file: filename.txt
-```
+Git will display each change "hunk" and ask you:
+`Stage this hunk [y,n,q,a,d,s,e,?]?` (Press `y` to stage it, or `n` to skip).
 
 ---
 
-## 💾 4. `git commit` — Save Your Changes
+## 💾 4. `git commit` — Save a Snapshot to History
 
-Commits staged changes with a message.
+Records the staged changes into the local repository with an informative message.
 
 ```bash
-git commit -m "Added homepage"
+git commit -m "feat: add responsive navbar and logo"
 ```
 
-✅ **Result:**
-
-```
-[main 5a0e23d] Added homepage
- 1 file changed, 10 insertions(+)
+✅ **Output Example:**
+```text
+[main 5a0e23d] feat: add responsive navbar and logo
+ 2 files changed, 45 insertions(+)
  create mode 100644 index.html
+ create mode 100644 style.css
 ```
+
+### 💡 Amend the last commit (fix typo / add forgotten file):
+```bash
+git add forgotten-file.css
+git commit --amend --no-edit
+```
+> [!WARNING]
+> Only amend commits that have **not** been pushed to a shared remote repository.
 
 ---
 
 ## 🕰️ 5. `git log` — View Commit History
 
-Displays a list of all commits in the current branch.
+Displays a chronological list of commits in your current branch.
 
 ```bash
 git log
 ```
 
+### 🎨 Pro Log View (One-line graphical tree):
+```bash
+git log --oneline --graph --decorate --all
+```
+
 ✅ **Output Example:**
-
+```text
+* 5a0e23d (HEAD -> main) feat: add responsive navbar
+* 1b8f42a docs: initial readme
+* 90c7e31 chore: initial commit
 ```
-commit 5a0e23df8b (HEAD -> main)
-Author: Tushar Manaktala <tushar@example.com>
-Date:   Sat Nov 8 2025
-
-    Added homepage
-```
-
-💡 Press **Q** to exit log view.
+*(Press `q` anytime to exit the log view).*
 
 ---
 
-## 🌿 6. `git branch` — Manage Branches
+## 🔍 6. `git show` — Inspect a Specific Commit or Object
 
-### 📌 Create a new branch:
-
-```bash
-git branch feature-1
-```
-
-### 🔁 Switch to another branch:
+Shows the metadata and full diff of a commit or tag.
 
 ```bash
-git checkout feature-1
+git show HEAD
+# or by commit hash
+git show 5a0e23d
 ```
 
-### 🧾 View all branches:
+---
 
+## 🌿 7. Modern Branch Navigation: `git switch` vs `git checkout`
+
+> [!NOTE]
+> Historically, `git checkout` handled both switching branches and undoing files. In Git 2.23+, Git introduced `git switch` (for branches) and `git restore` (for files) to make commands clearer and safer.
+
+### 🔀 Switch to an existing branch:
+```bash
+git switch feature/login
+```
+*(Classic equivalent: `git checkout feature/login`)*
+
+### 🆕 Create and switch to a new branch in one command:
+```bash
+git switch -c feature/dashboard
+```
+*(Classic equivalent: `git checkout -b feature/dashboard`)*
+
+### 🔙 Switch back to the previous branch:
+```bash
+git switch -
+```
+
+### 📋 List all local branches:
 ```bash
 git branch
 ```
 
-✅ **Output Example:**
-
-```
-* main
-  feature-1
+### 🔍 List all branches with tracking & commit details:
+```bash
+git branch -vv
 ```
 
 ---
 
-## 🔀 7. `git merge` — Merge Branches
+## 🔀 8. `git merge` — Combine Branches
 
-Merges another branch into the current one.
-
-```bash
-git merge feature-1
-```
-
-✅ **Result:**
-
-```
-Updating 5a0e23d..b3a29ac
-Fast-forward
- index.html | 10 ++++++++++
-```
-
-💡 *If there’s a conflict, Git will ask you to resolve it manually.*
-
----
-
-## 🌎 8. `git remote` — Manage Remote Repositories
-
-### Add a remote repository:
+Merges history from another branch into your currently checked-out branch.
 
 ```bash
-git remote add origin https://github.com/username/github-guide.git
+# 1. Switch to the target branch
+git switch main
+
+# 2. Merge feature branch into main
+git merge feature/dashboard
 ```
 
-### Verify remote connections:
-
+### 🛑 Abort a conflicting merge:
+If a merge results in conflicts and you want to safely back out to the pre-merge state:
 ```bash
-git remote -v
-```
-
-✅ **Output Example:**
-
-```
-origin  https://github.com/username/github-guide.git (fetch)
-origin  https://github.com/username/github-guide.git (push)
+git merge --abort
 ```
 
 ---
 
-## ⬆️ 9. `git push` — Upload Changes to GitHub
+## 🔎 9. `git diff` — Inspect Changes
 
-Push local commits to the remote repository.
-
-```bash
-git push origin main
-```
-
-✅ **Result:**
-
-```
-Enumerating objects: 5, done.
-Writing objects: 100% (5/5), done.
-To https://github.com/username/github-guide.git
-```
-
----
-
-## ⬇️ 10. `git pull` — Download Latest Changes
-
-Fetches and merges changes from the remote repository.
-
-```bash
-git pull origin main
-```
-
-✅ **Result:**
-
-```
-Updating a12b3cd..d45e6f7
-Fast-forward
- index.html | 2 ++
-```
-
----
-
-## 📥 11. `git clone` — Copy a Repository
-
-Creates a copy of an existing remote repository.
-
-```bash
-git clone https://github.com/username/github-guide.git
-```
-
-✅ **Result:**
-
-```
-Cloning into 'github-guide'...
-```
-
----
-
-## ⚙️ 12. `git config --list` — View Git Configuration
-
-Lists your Git settings and user details.
-
-```bash
-git config --list
-```
-
-✅ **Result:**
-
-```
-user.name=Tushar Manaktala
-user.email=tushar@example.com
-core.editor=code --wait
-```
-
----
-
-## 🧹 13. `git reset` / `git checkout` — Undo Changes
-
-### Undo staged files (before commit):
-
-```bash
-git reset filename.txt
-```
-
-### Revert file to last committed state:
-
-```bash
-git checkout -- filename.txt
-```
-
-💡 *Use carefully — this will discard local changes.*
-
----
-
-## 🔍 14. `git diff` — See What Changed
-
-Compare differences between working directory and last commit.
-
+### Compare working directory changes against staging:
 ```bash
 git diff
 ```
 
-✅ **Example Output:**
-
-```
-- old line
-+ new line
-```
-
----
-
-## 📚 15. `git help` — Get Command Help
-
-Need help with a specific command?
-
+### Compare staged changes against the last commit (`HEAD`):
 ```bash
-git help commit
+git diff --staged
 ```
 
-Or see all options:
-
+### Compare two branches:
 ```bash
-git help -a
+git diff main..feature/dashboard
 ```
 
 ---
 
-## 🧩 Quick Reference Table
+## 🧽 10. Modern Undoing: `git restore` vs `git reset`
 
-| Command        | Description         | Example                   |
-| -------------- | ------------------- | ------------------------- |
-| `git init`     | Initialize new repo | `git init`                |
-| `git status`   | Check repo status   | `git status`              |
-| `git add`      | Stage changes       | `git add .`               |
-| `git commit`   | Commit changes      | `git commit -m "Message"` |
-| `git log`      | View history        | `git log`                 |
-| `git branch`   | Manage branches     | `git branch feature`      |
-| `git checkout` | Switch branch       | `git checkout main`       |
-| `git merge`    | Merge branches      | `git merge dev`           |
-| `git remote`   | Manage remotes      | `git remote -v`           |
-| `git push`     | Upload commits      | `git push origin main`    |
-| `git pull`     | Download updates    | `git pull origin main`    |
-| `git clone`    | Clone repo          | `git clone <URL>`         |
-| `git diff`     | Compare changes     | `git diff`                |
-| `git reset`    | Unstage files       | `git reset`               |
+### 🩹 Discard local unstaged changes in a file:
+```bash
+git restore index.html
+```
+> [!WARNING]
+> Discarding unstaged changes cannot be undone by Git! Ensure you don't need those edits before running `git restore`.
 
----
+### ↩️ Unstage a file (keep local modifications intact):
+```bash
+git restore --staged index.html
+```
+*(Classic equivalent: `git reset HEAD index.html`)*
 
-## 🎉 Recap
+### ⚠️ Resetting the Staging Area / Commits:
+```bash
+# Unstage everything without touching files:
+git reset
 
-You’ve learned all essential Git commands!
-Now you can:
-💡 Initialize a repository
-💡 Commit changes safely
-💡 Work with branches
-💡 Push and pull updates from GitHub
+# Soft reset (moves HEAD back 1 commit, keeps changes staged):
+git reset --soft HEAD~1
+
+# Hard reset (DANGEROUS: wipes commits and working files back 1 commit):
+git reset --hard HEAD~1
+```
 
 ---
 
-➡️ **Next Step:** [Branching and Merging](Branching%20and%20Merging.md) to learn how to work on multiple features, merge them, and handle conflicts like a pro.
+## 📁 11. `git rm` & `git mv` — File Operations
+
+### Remove a file from disk and stage the removal:
+```bash
+git rm old-file.txt
+```
+
+### Stop tracking a file without deleting it from your computer:
+*(Perfect for files you accidentally tracked before adding to `.gitignore`)*
+```bash
+git rm --cached .env
+```
+
+### Rename or move a tracked file:
+```bash
+git mv old-name.js new-name.js
+```
+Git automatically detects this as a rename in your staged changes!
+
+---
+
+## 🌍 12. Remote Synchronization (`remote`, `push`, `pull`, `clone`)
+
+### Connect local repository to GitHub:
+```bash
+git remote add origin https://github.com/<username>/my-repo.git
+```
+
+### Check configured remotes:
+```bash
+git remote -v
+```
+
+### Push branch and set upstream tracking (`-u`):
+```bash
+git push -u origin main
+```
+*(Subsequent pushes only require typing `git push`)*
+
+### Fetch latest updates without merging:
+```bash
+git fetch origin
+```
+
+### Pull and integrate remote changes:
+```bash
+git pull origin main
+```
+
+### Clone an existing repository from GitHub:
+```bash
+git clone https://github.com/<username>/my-repo.git
+```
+
+---
+
+## 🧩 Comprehensive Quick Reference Table
+
+| Category | Modern Command | Classic Equivalent | Description |
+|---|---|---|---|
+| **Branching** | `git switch <branch>` | `git checkout <branch>` | Switch to an existing branch |
+| **Branching** | `git switch -c <branch>` | `git checkout -b <branch>` | Create and switch to new branch |
+| **Branching** | `git switch -` | `git checkout -` | Switch to previous branch |
+| **Undoing** | `git restore <file>` | `git checkout -- <file>` | Discard unstaged changes in working tree |
+| **Undoing** | `git restore --staged <file>` | `git reset HEAD <file>` | Unstage file (keep working tree changes) |
+| **Staging** | `git add -p <file>` | — | Interactively stage individual hunks |
+| **Status** | `git status -sb` | — | Concise branch status with symbol flags |
+| **Diff** | `git diff --staged` | `git diff --cached` | Compare staged changes with HEAD |
+| **Inspecting**| `git show <commit>` | — | Show commit metadata and diff |
+| **Files** | `git rm --cached <file>` | — | Untrack file without deleting from disk |
+| **Files** | `git mv <old> <new>` | — | Move or rename tracked file |
+| **Merge** | `git merge --abort` | — | Cancel merge in progress and reset state |
+
+---
+
+## 🎯 Hands-On Practice Exercise
+
+Try this 5-minute drill in a temporary folder:
+1. Initialize a repository: `git init practice-repo && cd practice-repo`
+2. Create `hello.txt` with the text `"Hello Git"`.
+3. Check status: `git status -sb`
+4. Stage and commit: `git add hello.txt && git commit -m "feat: initial commit"`
+5. Create and switch to branch: `git switch -c feature/test`
+6. Edit `hello.txt`, test `git diff`, and unstage using `git restore --staged` if staged.
+7. Switch back to main: `git switch main`
+
+---
+
+## 🏆 Recap & Next Steps
+
+You now know both the foundational commands and the modern Git 2.23+ standards used in top software engineering teams!
+
+➡️ **Next Guide:** [Branching and Merging](Branching%20and%20Merging.md) — Master branching strategies, tracking branches, fast-forward vs 3-way merges, and conflict resolution!

@@ -1,357 +1,225 @@
 # ⚡ GitHub CLI (Command-Line Power)
 
----
+## 🎯 Topic: Terminal-First GitHub Workflow & Automation
 
-## 🎯 **Objective**
-
-Learn how to use **GitHub CLI (`gh`)**, a powerful command-line tool that lets you manage **repositories, issues, pull requests, and more — right from your terminal!** 🖥️💪
+The **GitHub CLI (`gh`)** brings the full power of GitHub into your terminal. Instead of constantly context-switching between your terminal and browser tabs to open pull requests, review diffs, trigger CI/CD runs, publish releases, or configure secrets, you can execute everything from the command line.
 
 ---
 
-## 🧩 **1. What Is GitHub CLI?**
+## 🌟 What You’ll Learn
 
-The **GitHub CLI (gh)** brings GitHub to your terminal!
-Instead of switching between your browser and terminal, you can **create repos, manage issues, and handle pull requests** using simple commands.
-
-✨ It’s perfect for developers who love automation and speed.
-
----
-
-## ⚙️ **2. Installation & Setup**
-
-### 🔹 **Step 1: Download & Install**
-
-Visit 👉 [https://cli.github.com/](https://cli.github.com/)
-Choose your OS and install accordingly.
-
-**For Windows (using Scoop):**
-
-```bash
-scoop install gh
-```
-
-**For macOS (using Homebrew):**
-
-```bash
-brew install gh
-```
-
-**For Linux (Debian/Ubuntu):**
-
-```bash
-sudo apt install gh
-```
+By the end of this guide, you’ll master:
+- ✅ Installing and authenticating `gh` with proper OAuth scopes
+- ✅ Creating, cloning, and synchronizing forks (`gh repo sync`)
+- ✅ End-to-end Pull Request workflows (`gh pr create`, `checkout`, `diff`, `merge`)
+- ✅ Managing GitHub Releases with auto-generated release notes (`gh release`)
+- ✅ Monitoring and debugging GitHub Actions workflow runs (`gh run view --log`)
+- ✅ Inspecting repository rulesets and branch policies (`gh ruleset list`)
+- ✅ Managing encrypted environment secrets (`gh secret set / list`)
+- ✅ JSON formatting and jq filtering for terminal automation
 
 ---
 
-### 🔹 **Step 2: Verify Installation**
+## ⚙️ 1. Installation & Authentication
 
-Check if the installation was successful:
+### 📥 Install on Your Platform:
+- **Windows (winget):** `winget install --id GitHub.cli`
+- **Windows (scoop):** `scoop install gh`
+- **macOS (Homebrew):** `brew install gh`
+- **Linux (Debian/Ubuntu):**
+  ```bash
+  type -p curl >/dev/null || sudo apt install curl -y
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+  sudo apt update && sudo apt install gh -y
+  ```
 
-```bash
-gh --version
-```
-
-✅ Output example:
-
-```
-gh version 2.59.0 (2025-11-08)
-https://github.com/cli/cli/releases/latest
-```
-
----
-
-### 🔹 **Step 3: Authenticate with GitHub**
-
-To connect your CLI with GitHub:
-
+### 🔐 Authenticate with GitHub:
 ```bash
 gh auth login
 ```
+Follow the interactive prompts:
+1. Select **GitHub.com**
+2. Choose your preferred protocol (**HTTPS** or **SSH**)
+3. Choose **Login with a web browser** (or paste an existing Personal Access Token)
+4. Confirm authentication with one-time code.
 
-Follow the on-screen prompts:
-
-* Choose **GitHub.com**
-* Select **HTTPS** or **SSH**
-* Open the authentication link in your browser
-* Authorize GitHub CLI
-
-✅ Once connected, test it:
-
+### Verify connection:
 ```bash
 gh auth status
 ```
 
-Output example:
+---
 
+## 📦 2. Repository & Fork Management
+
+### Create a new repository on GitHub and link it locally:
+```bash
+gh repo create my-project --public --source=. --remote=origin --push
 ```
-✓ Logged in to github.com as tusharmanaktala (SSH)
+
+### Fork an open-source project and clone it in one command:
+```bash
+gh repo fork torvalds/linux --clone
+```
+
+### 🔄 Synchronize your fork with upstream:
+Keep your fork completely updated with the upstream repository without typing manual fetch/merge commands:
+```bash
+gh repo sync
 ```
 
 ---
 
-## 🧠 **3. Basic GitHub CLI Commands**
+## 🌿 3. The Professional Pull Request Workflow
 
-Let’s explore the most common and useful commands 👇
-
----
-
-### 📦 **a. Working with Repositories**
-
-**Create a new repo:**
-
+### Create a Pull Request interactively:
 ```bash
-gh repo create github-guide --public
+gh pr create
 ```
 
-✅ Output:
-
-```
-✓ Created repository 'tusharmanaktala/github-guide' on GitHub
-```
-
-**Clone a repo:**
-
+### Create a PR with title and body non-interactively:
 ```bash
-gh repo clone username/repo-name
+gh pr create --title "feat: add user authentication" --body "Implements JWT login. Closes #42" --base main
 ```
 
-**View details about a repo:**
-
+### Check out a colleague's PR locally to test their code:
 ```bash
-gh repo view username/repo-name
+gh pr checkout 128
 ```
+*(Automatically creates a local branch and checks out PR #128!)*
 
-**Open repo in browser:**
-
+### View PR status and review checks:
 ```bash
-gh repo view --web
+# View checks and diff
+gh pr checks
+gh pr diff
+
+# Open PR directly in default web browser
+gh pr view --web
 ```
 
----
-
-### 🧩 **b. Managing Issues**
-
-**List all issues:**
-
+### Approve and Merge a PR:
 ```bash
-gh issue list
-```
+# Submit an approval review
+gh pr review --approve -b "LGTM! Verified locally."
 
-✅ Example output:
-
-```
-#12  🐞 Fix navigation bug           open   frontend
-#13  ✨ Add GitHub CLI tutorial      open   documentation
-```
-
-**Create a new issue:**
-
-```bash
-gh issue create --title "Fix typo in README" --body "The word 'setup' is misspelled on line 3."
-```
-
-**View a specific issue:**
-
-```bash
-gh issue view 13
-```
-
-**Close an issue:**
-
-```bash
-gh issue close 13
+# Squash and merge, then delete the branch automatically
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
-### 🔀 **c. Working with Pull Requests (PRs)**
+## 🏷️ 4. Managing GitHub Releases
 
-**List open pull requests:**
+Creating versioned releases with release notes directly from your CLI:
 
+### 🚀 Create a release with automatically generated changelog notes:
 ```bash
-gh pr list
+gh release create v1.2.0 --title "v1.2.0: Modern Git & Rescue Workflows" --generate-notes
 ```
 
-**View PR details:**
-
+### Attach compiled binary assets or zip archives to a release:
 ```bash
-gh pr view 21
+gh release create v1.2.0 ./dist/bundle.zip --generate-notes
 ```
 
-**Create a new pull request:**
-
+### List releases:
 ```bash
-gh pr create --title "Added new CLI section" --body "This PR adds File 12 to the guide." --base main --head feature/cli-guide
-```
-
-**Check out a PR locally (for testing):**
-
-```bash
-gh pr checkout 21
-```
-
-**Merge a pull request:**
-
-```bash
-gh pr merge 21
-```
-
-**Open PR in browser:**
-
-```bash
-gh pr view 21 --web
+gh release list
 ```
 
 ---
 
-### 🗣️ **d. Managing Collaborators**
+## 🤖 5. Inspecting GitHub Actions & CI/CD Runs
 
-**Add collaborator:**
+No need to open the GitHub Actions tab to see why your CI build failed!
 
-```bash
-gh api repos/:owner/:repo/collaborators/:username --method PUT
-```
-
-**Remove collaborator:**
-
-```bash
-gh api repos/:owner/:repo/collaborators/:username --method DELETE
-```
-
----
-
-## 🧮 **4. Managing GitHub Actions (Automation)**
-
-GitHub CLI can also interact with **workflows and CI/CD pipelines**!
-
-**List workflows:**
-
-```bash
-gh workflow list
-```
-
-**Run a workflow manually:**
-
-```bash
-gh workflow run build.yml
-```
-
-**Check workflow run status:**
-
+### List recent workflow runs:
 ```bash
 gh run list
 ```
 
----
-
-## 📊 **5. GitHub Projects and Discussions**
-
-**View all projects:**
-
-```bash
-gh project list
+✅ **Output Example:**
+```text
+STATUS  TITLE                   WORKFLOW  BRANCH  EVENT  ID          ELAPSED  AGE
+✓       docs: fix typo          CI        main    push   9817234567  45s      5m
+X       feat: add payment API   CI        dev     push   9817112233  1m12s    22m
 ```
 
-**Create a new discussion:**
-
+### Inspect a specific run:
 ```bash
-gh discussion create --title "Ideas for new GitHub CLI features" --body "Let’s brainstorm CLI-based automation ideas!"
+gh run view 9817112233
 ```
 
-**List discussions:**
-
+### 📜 View failure logs directly in terminal:
 ```bash
-gh discussion list
+gh run view 9817112233 --log-failed
 ```
 
----
-
-## 🧰 **6. Helpful Utilities**
-
-**Open any resource (issue, PR, repo) directly in browser:**
-
+### Re-run a failed workflow:
 ```bash
-gh browse
-```
-
-**Search across repositories:**
-
-```bash
-gh search repos "github guide"
-```
-
-**View your notifications:**
-
-```bash
-gh notifications
-```
-
-**Log out:**
-
-```bash
-gh auth logout
+gh run rerun 9817112233 --failed
 ```
 
 ---
 
-## 💡 **7. Automation Example: Create Repo + Push Project**
+## 🔒 6. Governance: Rulesets & Secrets
 
-Here’s how you can create a repo and push your project from terminal — all using CLI:
+> [!NOTE]
+> Managing secrets and rulesets requires repository **Admin** or **Maintainer** permissions.
 
+### View configured repository rulesets:
 ```bash
-# Step 1: Initialize Git
-git init
-git add .
-git commit -m "Initial commit"
-
-# Step 2: Create repo via CLI
-gh repo create my-awesome-project --public --source=. --remote=origin
-
-# Step 3: Push to GitHub
-git push -u origin main
+gh ruleset list
 ```
 
-✅ Your project is now live on GitHub!
-
----
-
-## ⚙️ **8. GitHub CLI Shortcuts**
-
-| Action            | Command                        |
-| ----------------- | ------------------------------ |
-| View your profile | `gh api user`                  |
-| Star a repo       | `gh repo star username/repo`   |
-| Fork a repo       | `gh repo fork username/repo`   |
-| Delete a repo     | `gh repo delete username/repo` |
-| Check rate limit  | `gh api rate_limit`            |
-
----
-
-## 🧠 **Pro Tips**
-
-💡 Use `--web` with any command to open that page in your browser.
-💡 Use `--json` flag to get structured outputs for scripting:
-
+### Manage repository secrets:
 ```bash
-gh issue list --json title,number,state
+# List all secret names configured in repo
+gh secret list
+
+# Set a secret value securely (interactive prompt or pipe)
+gh secret set STRIPE_SECRET_KEY
 ```
 
-💡 Combine Git + GitHub CLI for full automation pipelines!
-💡 You can even create GitHub Actions workflows from the terminal.
+---
+
+## 📊 7. Pro Automation: JSON Output & Scripting
+
+Every `gh` command supports `--json` and `--jq` flags, enabling powerful custom bash/PowerShell automation scripts.
+
+### Get open PR titles and numbers:
+```bash
+gh pr list --state open --json number,title --jq '.[] | "#\(.number): \(.title)"'
+```
+
+### Count open issues:
+```bash
+gh issue list --state open --json number --jq 'length'
+```
 
 ---
 
-## 🏁 **Summary**
+## 📚 Essential GitHub CLI Reference Table
 
-✨ The **GitHub CLI (gh)** allows you to:
-
-* Manage repositories, issues, and PRs
-* Automate tasks from your terminal
-* Speed up collaboration and project management
-
-No browser, no clicks — just pure **command-line power**! ⚡💻
+| Command | Description |
+|---|---|
+| `gh auth status` | Check authentication and token scopes |
+| `gh repo sync` | Synchronize a fork with its upstream repository |
+| `gh pr create --generate-notes` | Open a PR using commit messages as description |
+| `gh pr checkout <number>` | Pull down and switch to a PR branch locally |
+| `gh pr merge --squash --delete-branch`| Squash-merge PR and delete remote branch |
+| `gh release create <tag> --generate-notes` | Publish release with automated release notes |
+| `gh run list` | View recent CI/CD workflow runs |
+| `gh run view <id> --log-failed` | Stream failed CI build logs to terminal |
+| `gh secret set <name>` | Securely configure an environment secret |
+| `gh browse` | Open current repository or branch in web browser |
 
 ---
 
-➡️ **Next Step:** [Hosting Websites with GitHub Pages](Hosting%20Websites%20with%20GitHub%20Pages.md) to host your projects live on GitHub Pages.
+## 🏆 Recap & Next Steps
+
+With GitHub CLI, your terminal becomes an end-to-end command center for code review, release engineering, and CI/CD operations!
+
+➡️ **Next Guide:** [Git Rescue Handbook](Git%20Rescue%20Handbook.md) — Learn how to recover deleted branches, salvage lost commits with `git reflog`, and undo disasters safely.

@@ -61,16 +61,24 @@ Before using Git, configure your username and email (this information appears in
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your-email@example.com"
+git config --global init.defaultBranch main
 ```
 
-### 💡 Tip:
-
-Use `--global` to apply settings for all repositories, or omit it for a specific repo.
+### 💡 Line Endings Configuration:
+Configure Git to handle line endings smoothly between operating systems:
+- **On Windows:**
+  ```powershell
+  git config --global core.autocrlf true
+  ```
+- **On macOS / Linux:**
+  ```bash
+  git config --global core.autocrlf input
+  ```
 
 🔎 **View Your Configurations:**
 
 ```bash
-git config --list
+git config --list --show-origin
 ```
 
 ---
@@ -87,13 +95,22 @@ ssh-keygen -t ed25519 -C "your-email@example.com"
 
 Press **Enter** three times to accept default options.
 
-### 📂 Locate the Key:
+### 📂 View & Copy the Public Key:
 
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
+- **On Windows (PowerShell):**
+  ```powershell
+  Get-Content $HOME\.ssh\id_ed25519.pub | Set-Clipboard
+  ```
+- **On macOS:**
+  ```bash
+  pbcopy < ~/.ssh/id_ed25519.pub
+  ```
+- **On Linux (or Git Bash):**
+  ```bash
+  cat ~/.ssh/id_ed25519.pub
+  ```
 
-Copy the entire output.
+Copy the entire output (it begins with `ssh-ed25519`).
 
 ---
 

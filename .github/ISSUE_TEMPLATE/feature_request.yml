@@ -1,0 +1,41 @@
+name: 💡 Content Suggestion / Feature Request
+description: Suggest a new topic, command explanation, cheat sheet, or diagram.
+title: "[Suggestion]: "
+labels: ["enhancement", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make Zero-to-GitHero more helpful or comprehensive? Let us know!
+  - type: input
+    id: title
+    attributes:
+      label: Topic or Feature Summary
+      placeholder: "e.g., Add explanation for git sparse-checkout"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Detailed Description
+      description: What should this new section or improvement cover?
+      placeholder: "Explain why this command is useful, what real-world scenarios it solves, and how beginners will benefit."
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Target Difficulty Level
+      options:
+        - Beginner (Core concepts & daily commands)
+        - Intermediate (Collaboration, branching, stashing)
+        - Advanced (Reflog, bisect, internals, CI/CD)
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing_to_pr
+    attributes:
+      label: Would you like to submit a Pull Request for this?
+      options:
+        - label: Yes, I would love to contribute the content myself!
+

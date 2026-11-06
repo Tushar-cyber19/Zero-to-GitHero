@@ -313,4 +313,13 @@ Your **GitHub profile** is your digital portfolio — make every commit count �
 
 ---
 
-➡️ **Next Step:** [README](README.md) to review the complete guide overview and contribute to the project.
+## ⚡ Quick-Lookup Cheat Sheets
+
+Need a fast reminder during daily development? Keep these handy:
+- 📖 [Git Core Commands Cheat Sheet](cheat-sheets/git-commands.md)
+- 🚑 [Git Disaster Recovery Cheat Sheet](cheat-sheets/git-recovery.md)
+- 💻 [GitHub CLI Reference Sheet](cheat-sheets/github-cli.md)
+
+---
+
+➡️ **Return to Course Hub:** [Zero-to-GitHero README](README.md) to review the curriculum roadmap or contribute to the project!
