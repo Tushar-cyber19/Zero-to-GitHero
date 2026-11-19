@@ -1,16 +1,18 @@
-# ⚡ Git Commands Cheat Sheet
+# Git Commands Cheat Sheet
 
-A concise, high-density reference sheet for daily Git usage.
+A concise reference sheet for daily Git usage.
 
 ---
 
-## 🚀 Setup & Config
+## Setup & Config
 
 ```bash
-# Global configuration
+# User identity
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 git config --global init.defaultBranch main
+
+# Line ending handling
 git config --global core.autocrlf true         # Windows
 git config --global core.autocrlf input        # macOS / Linux
 
@@ -22,10 +24,10 @@ git config --global alias.cm "commit -m"
 
 ---
 
-## 🛠️ Daily Workflow
+## Daily Workflow
 
 ```bash
-# Initialize & check status
+# Initialize & inspect status
 git init
 git status -sb
 
@@ -36,68 +38,67 @@ git add -p <file>                # Interactive hunk staging
 
 # Committing
 git commit -m "feat: description"
-git commit --amend --no-edit     # Fix up last commit (unpushed only!)
+git commit --amend --no-edit     # Amend previous unpushed commit
 
-# Diffing
+# Comparing
 git diff                         # Working tree vs staging
-git diff --staged                # Staged vs HEAD
+git diff --staged                # Staged changes vs HEAD
 git diff branchA..branchB        # Compare two branches
 ```
 
 ---
 
-## 🌿 Branching & Merging
+## Branching & Merging
 
 ```bash
-# Modern navigation (Git 2.23+)
+# Modern navigation
 git switch <branch>              # Switch to branch
-git switch -c <new-branch>       # Create & switch to new branch
-git switch -                     # Switch to previous branch
+git switch -c <new-branch>       # Create and switch to new branch
+git switch -                     # Switch to previously active branch
 
 # Inspecting & Deleting
-git branch -vv                   # Detailed tracking status
-git branch -d <branch>           # Safe delete (merged only)
-git branch -D <branch>           # Force delete (unmerged)
+git branch -vv                   # Tracking status and ahead/behind counts
+git branch -d <branch>           # Safe delete (merged branches)
+git branch -D <branch>           # Force delete (unmerged branches)
 
 # Merging
 git merge <branch>               # Fast-forward or 3-way merge
-git merge --no-ff <branch>       # Force a merge commit
+git merge --no-ff <branch>       # Enforce merge commit creation
 git merge --abort                # Cancel conflicted merge
 ```
 
 ---
 
-## ☁️ Remotes & Sync
+## Remotes & Sync
 
 ```bash
-# Setup remotes
+# Remote management
 git remote add origin <url>
 git remote -v
 git remote set-url origin <new-url>
 
-# Syncing
-git push -u origin <branch>      # Push & track
+# Synchronization
+git push -u origin <branch>      # Push and configure upstream tracking
 git push                         # Push tracked branch
-git fetch --prune                # Fetch & remove deleted remote branches
-git pull --rebase origin main    # Pull without creating merge bubbles
+git fetch --prune                # Fetch and delete stale remote tracking branches
+git pull --rebase origin main    # Pull and rebase to prevent merge bubbles
 git push --force-with-lease      # Safe force push
 ```
 
 ---
 
-## 🧳 Stashing & Moving
+## Stashing & File Operations
 
 ```bash
-# Stashing
-git stash push -u -m "msg"       # Stash with untracked files and label
-git stash list
-git stash pop                    # Apply & remove latest
-git stash apply stash@{0}        # Apply without removing
+# Stash operations
+git stash push -u -m "message"   # Stash including untracked files with label
+git stash list                   # View stash stack
+git stash pop                    # Apply and drop latest stash
+git stash apply stash@{0}        # Apply stash without dropping
 git stash branch <new-branch>    # Turn stash into a new branch
 
-# Files
-git rm <file>                    # Delete file & stage removal
+# File operations
+git rm <file>                    # Remove file from disk and stage
 git rm --cached <file>           # Stop tracking file (keep on disk)
 git mv <old> <new>               # Rename tracked file
 ```
-

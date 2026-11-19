@@ -1,128 +1,118 @@
-# 🚀 Zero-to-GitHero: The Complete Git & GitHub Guide
+# Zero-to-GitHero: The Complete Git & GitHub Guide
 
 [![GitHub stars](https://img.shields.io/github/stars/Tushar-cyber19/Zero-to-Githero?style=social)](https://github.com/Tushar-cyber19/Zero-to-GitHero)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version: v1.2.0](https://img.shields.io/badge/Version-v1.2.0-blue.svg)](CHANGELOG.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
 
-> **From Zero to Hero:** Master Git and GitHub with step-by-step tutorials, modern Git 2.40+ standards, disaster recovery techniques, professional CI/CD workflows, and quick-lookup cheat sheets! 💪
+> A practical, structured guide from initializing your first repository to mastering modern Git standards, disaster recovery with reflog, professional CI/CD pipelines, and GitHub CLI workflows.
 
 ---
 
-## 🎯 What Makes Zero-to-GitHero Different?
+## Visual Learning Roadmap
 
-**Zero-to-GitHero** is not just another flat command cheat sheet. It is a structured, practical journey designed to guide you from initializing your first local repository all the way to handling complex merge conflicts, salvaging dropped commits with `git reflog`, debugging regressions with `git bisect`, and deploying production CI/CD pipelines.
-
-- 🌿 **Modern Git Standards:** Covers modern commands (`git switch`, `git restore`, `git diff --staged`) alongside classic workflows.
-- 🚑 **Git Rescue Handbook:** Complete guide on recovering from accidental `git reset --hard`, deleted branches, and detached HEAD states.
-- 🪟 **Cross-Platform Compatibility:** Tested instructions for Windows PowerShell, Git Bash, and macOS/Linux.
-- 🤖 **Industry Workflows:** Production-grade GitHub Actions CI/CD templates, Repository Rulesets, CODEOWNERS, and Dependabot.
-- ⚡ **Quick Reference Cheat Sheets:** Instant cheat sheets for daily commands, disaster recovery, and GitHub CLI.
-
----
-
-## 🗺️ Visual Learning Roadmap
+Follow the sequential 20-part curriculum designed to take you from foundational concepts to advanced engineering workflows:
 
 ```mermaid
 flowchart TD
-    subgraph L1["🟢 Level 1: Foundations & Setup"]
-        A["01. Introduction to Git & GitHub"] --> B["02. Installation & Setup"]
+    subgraph Level1["Level 1: Foundations & Architecture"]
+        01["01. Introduction to Git and GitHub"] --> 02["02. Setting Up Git and GitHub"]
+        02 --> 03["03. Git Architecture and Fundamentals"]
+        03 --> 04["04. Essential Git Commands"]
+        04 --> 05["05. Inspecting Changes and History"]
     end
 
-    subgraph L2["🟢 Level 2: Daily Essentials & Branching"]
-        B --> C["03. Git Commands Explained"]
-        C --> D["04. Branching and Merging"]
+    subgraph Level2["Level 2: Branching & Remote Collaboration"]
+        05 --> 06["06. Branching and Merging"]
+        06 --> 07["07. Working with Remote Repositories"]
+        07 --> 08["08. Exploring GitHub Features"]
+        08 --> 09["09. Working with GitHub Issues & Pull Requests"]
+        09 --> 10["10. GitHub CLI (Command-Line Power)"]
     end
 
-    subgraph L3["🟡 Level 3: Collaboration & GitHub Power Tools"]
-        D --> E["05. Working with Remote Repositories"]
-        E --> F["06. Exploring GitHub Features"]
-        F --> G["07. Issues & Pull Requests"]
-        G --> H["08. GitHub CLI (Command-Line Power)"]
+    subgraph Level3["Level 3: History Rewriting & Recovery"]
+        10 --> 11["11. Git Stash & Revert"]
+        11 --> 12["12. Git Rebase & Cherry-pick"]
+        12 --> 13["13. Git Rescue Handbook (Reflog & Disasters)"]
+        13 --> 14["14. Advanced Git (Bisect, Worktrees, Submodules, LFS)"]
     end
 
-    subgraph L4["🔴 Level 4: Advanced History, Recovery & Debugging"]
-        H --> I["09. Git Stash & Revert"]
-        I --> J["10. Git Rebase & Cherry-pick"]
-        J --> K["11. Git Rescue Handbook (Reflog & Disasters)"]
-        K --> L["12. Advanced Git (Bisect, Worktrees, Submodules, LFS)"]
-    end
-
-    subgraph L5["🟣 Level 5: Professional Engineering & Hosting"]
-        L --> M["13. GitHub Actions & CI/CD Pipelines"]
-        M --> N["14. GitHub Security & Repository Management"]
-        N --> O["15. Hosting Websites with GitHub Pages"]
-        O --> P["16. Best Practices & Professional Workflows"]
-        P --> Q["17. Troubleshooting Encyclopedia"]
-        Q --> R["18. Advanced Tips & Productivity Hacks"]
+    subgraph Level4["Level 4: Professional Engineering & Operations"]
+        14 --> 15["15. GitHub Actions & CI-CD"]
+        15 --> 16["16. GitHub Security & Repository Management"]
+        16 --> 17["17. Hosting Websites with GitHub Pages"]
+        17 --> 18["18. Best Practices & Professional Workflow"]
+        18 --> 19["19. Troubleshooting Git & GitHub Issues"]
+        19 --> 20["20. Advanced Tips, Troubleshooting & Productivity Hacks"]
     end
 ```
 
 ---
 
-## 📋 Comprehensive Table of Contents
+## Curriculum Table of Contents
 
-### 🟢 Level 1: Foundations & Setup
-1. [🧭 Introduction to Git and GitHub](Introduction%20to%20Git%20and%20GitHub.md) — What is Git/GitHub, version control basics, and terminology.
-2. [⚙️ Setting Up Git and GitHub](Setting%20Up%20Git%20and%20GitHub.md) — Cross-platform installation, global config, SSH keys, and `core.autocrlf`.
+All guides are numbered in chronological order of learning:
 
-### 🟢 Level 2: Core Git & Branching
-3. [🧠 Git Commands Explained](Git%20Commands%20Explained.md) — Essential daily commands, modern `switch` & `restore`, interactive staging (`add -p`).
-4. [🌿 Branching and Merging](Branching%20and%20Merging.md) — Feature branches, tracking branches (`-vv`), Fast-Forward vs 3-Way merges, and conflict resolution.
+### Level 1: Foundations & Architecture
+1. [01. Introduction to Git and GitHub](01.%20Introduction%20to%20Git%20and%20GitHub.md) — What is Git/GitHub, distributed version control, and terminology.
+2. [02. Setting Up Git and GitHub](02.%20Setting%20Up%20Git%20and%20GitHub.md) — Installation across Windows, macOS, Linux, user identity, and SSH key authentication.
+3. [03. Git Architecture and Fundamentals](03.%20Git%20Architecture%20and%20Fundamentals.md) — The 4 zones of Git, the Object model (blobs, trees, commits), and snapshots vs diffs.
+4. [04. Essential Git Commands](04.%20Essential%20Git%20Commands.md) — Initializing repositories, status codes (`-sb`), patch staging (`add -p`), commits, and modern `git restore`.
+5. [05. Inspecting Changes and History](05.%20Inspecting%20Changes%20and%20History.md) — Line-by-line diffs, staged comparisons, log trees, `git blame`, and `git grep`.
 
-### 🟡 Level 3: Remotes & GitHub Collaboration
-5. [🌍 Working with Remote Repositories](Working%20with%20Remote%20Repositories.md) — Remotes, `push -u`, `fetch --prune`, `pull --rebase`, and `--force-with-lease`.
-6. [📘 Exploring GitHub Features](Exploring%20GitHub%20Features.md) — Repositories, forks, stars, discussions, and open-source contribution flow.
-7. [🐛 Working with GitHub Issues & Pull Requests](Working%20with%20GitHub%20Issues%20&%20Pull%20Requests.md) — Bug tracking, review cycles, and draft PRs.
-8. [💻 GitHub CLI (Command-Line Power)](GitHub%20CLI%20(Command-Line%20Power).md) — Terminal-first GitHub: `gh pr`, `gh release`, `gh run`, and `gh secret`.
+### Level 2: Branching & Remote Collaboration
+6. [06. Branching and Merging](06.%20Branching%20and%20Merging.md) — Modern `git switch`, tracking branches (`-vv`), Fast-Forward vs 3-Way merges, and conflict resolution.
+7. [07. Working with Remote Repositories](07.%20Working%20with%20Remote%20Repositories.md) — Remotes, `push -u`, `fetch --prune`, `pull --rebase`, and `--force-with-lease`.
+8. [08. Exploring GitHub Features](08.%20Exploring%20GitHub%20Features.md) — Repositories, forks, discussions, and open-source contribution patterns.
+9. [09. Working with GitHub Issues & Pull Requests](09.%20Working%20with%20GitHub%20Issues%20&%20Pull%20Requests.md) — Task tracking, PR review workflows, auto-closing keywords, and merge strategies.
+10. [10. GitHub CLI (Command-Line Power)](10.%20GitHub%20CLI%20(Command-Line%20Power).md) — Terminal-first GitHub: `gh pr`, `gh release`, `gh run`, and secret management.
 
-### 🔴 Level 4: Advanced History, Recovery & Debugging
-9. [🔄 Git Stash & Revert](Git%20Stash%20&%20Revert.md) — Shelving work (`stash -u/-p`), stashing to branches, and non-destructive rollbacks.
-10. [🔀 Git Rebase & Cherry-pick](Git%20Rebase%20&%20Cherry-pick.md) — Linear history, interactive squashing (`rebase -i`), `range-diff`, and `cherry-pick -x`.
-11. [🚑 Git Rescue Handbook](Git%20Rescue%20Handbook.md) — Recovering from `reset --hard`, restoring deleted branches, and `git reflog` wizardry.
-12. [🔬 Advanced Git: Bisect, Worktrees, Submodules & LFS](Advanced%20Git%20-%20Bisect,%20Worktrees,%20Submodules%20&%20LFS.md) — Binary search bug hunting, multi-branch directories, and large files.
+### Level 3: History Rewriting & Recovery
+11. [11. Git Stash & Revert](11.%20Git%20Stash%20&%20Revert.md) — Shelving work (`stash -u/-p`), stashing to branches, and non-destructive rollbacks on shared branches.
+12. [12. Git Rebase & Cherry-pick](12.%20Git%20Rebase%20&%20Cherry-pick.md) — Reapplying commits, interactive squashing (`rebase -i`), `range-diff`, and `cherry-pick -x`.
+13. [13. Git Rescue Handbook](13.%20Git%20Rescue%20Handbook.md) — Recovering from `reset --hard`, restoring deleted branches, and `git reflog` diagnostics.
+14. [14. Advanced Git - Bisect, Worktrees, Submodules & LFS](14.%20Advanced%20Git%20-%20Bisect,%20Worktrees,%20Submodules%20&%20LFS.md) — Binary search bug hunting, parallel workspaces with worktrees, submodules, and large file storage.
 
-### 🟣 Level 5: Professional CI/CD, Security & Hosting
-13. [🚀 GitHub Actions & CI/CD Pipelines](GitHub%20Actions%20&%20CI-CD.md) — Production automated testing, matrix builds, caching, and security permissions.
-14. [🛡️ GitHub Security & Repository Management](GitHub%20Security%20&%20Repository%20Management.md) — Repository Rulesets, CODEOWNERS, Dependabot, and Secret Scanning.
-15. [🌐 Hosting Websites with GitHub Pages](Hosting%20Websites%20with%20GitHub%20Pages.md) — Static hosting, Actions deployment, custom domains, and framework exports.
-16. [✅ Best Practices & Professional Workflows](Best%20Practices%20&%20Professional%20Workflow.md) — Git Flow vs Trunk-Based, Conventional Commits, and PR etiquette.
-17. [🔧 Troubleshooting Git & GitHub Issues](Troubleshooting%20Git%20&%20GitHub%20Issues.md) — Cross-platform diagnostic fixes for SSH, credentials, line-endings, and push rejections.
-18. [⚡ Advanced Tips, Troubleshooting & Productivity Hacks](Advanced%20Tips,%20Troubleshooting%20&%20Productivity%20Hacks.md) — Shell aliases, Git hooks, and productivity shortcuts.
-
----
-
-## ⚡ Quick-Lookup Cheat Sheets
-
-Need an instant command reference while coding?
-- 📖 [Git Core Commands Reference](cheat-sheets/git-commands.md) — Daily command syntax and flags.
-- 🚑 [Git Disaster Recovery Reference](cheat-sheets/git-recovery.md) — The emergency "Oh Shit, Git!" one-liners.
-- 💻 [GitHub CLI Reference](cheat-sheets/github-cli.md) — Essential `gh` terminal commands.
+### Level 4: Professional Engineering & Operations
+15. [15. GitHub Actions & CI-CD](15.%20GitHub%20Actions%20&%20CI-CD.md) — Production automated testing, matrix builds, caching, and minimal security permissions.
+16. [16. GitHub Security & Repository Management](16.%20GitHub%20Security%20&%20Repository%20Management.md) — Repository Rulesets, CODEOWNERS, Dependabot alerts, Secret Scanning, and Codespaces.
+17. [17. Hosting Websites with GitHub Pages](17.%20Hosting%20Websites%20with%20GitHub%20Pages.md) — Static hosting constraints, Actions-based deployment, custom domains, and framework exports.
+18. [18. Best Practices & Professional Workflow](18.%20Best%20Practices%20&%20Professional%20Workflow.md) — GitHub Flow vs Trunk-Based Development, Conventional Commits, and SemVer release tags.
+19. [19. Troubleshooting Git & GitHub Issues](19.%20Troubleshooting%20Git%20&%20GitHub%20Issues.md) — Cross-platform diagnostic fixes for SSH, credentials, line-endings (`CRLF`), and rejected pushes.
+20. [20. Advanced Tips, Troubleshooting & Productivity Hacks](20.%20Advanced%20Tips,%20Troubleshooting%20&%20Productivity%20Hacks.md) — Useful aliases, Git autocorrect, global gitignores, and `git rerere`.
 
 ---
 
-## 🤝 Contributing
+## GitHub Cheat Sheet
 
-We welcome contributions from developers of all experience levels!
-- Read our [Contributing Guide](CONTRIBUTING.md) for branch guidelines, commit standards, and PR workflows.
-- Please review our [Code of Conduct](CODE_OF_CONDUCT.md).
-- Track version history and recent upgrades in [CHANGELOG.md](CHANGELOG.md).
+For instant reference during development, use the high-resolution light-theme cheat sheet below or browse the individual topic references:
 
----
+[![GitHub Cheat Sheet](cheat-sheets/git-cheat-sheet.png)](cheat-sheets/git-cheat-sheet.png)
 
-## 📄 License
+- **Repository:** [Zero-to-GitHero](https://github.com/Tushar-cyber19/Zero-to-GitHero)
+- **Developed by:** Tushar Manaktala ([@Tushar-cyber19](https://github.com/Tushar-cyber19))
 
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-## 🙏 Acknowledgments
-
-- **Linus Torvalds** and the Git Core Team for creating Git.
-- **GitHub** for revolutionizing developer collaboration.
-- **Open Source Contributors** who keep documentation accurate and accessible.
+### Text-Based Reference Guides:
+- [Git Core Commands Cheat Sheet](cheat-sheets/git-commands.md)
+- [Git Disaster Recovery Cheat Sheet](cheat-sheets/git-recovery.md)
+- [GitHub CLI Reference Sheet](cheat-sheets/github-cli.md)
 
 ---
 
-**Ready to start your journey?**  
-👉 **[Start Here: 🧭 Introduction to Git and GitHub](Introduction%20to%20Git%20and%20GitHub.md)**
+## Contributing
+
+Contributions from developers of all experience levels are welcome.
+- Please review our [Contributing Guide](CONTRIBUTING.md) for branch naming standards and PR guidelines.
+- Adhere to the [Code of Conduct](CODE_OF_CONDUCT.md).
+- View version history in [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+**Begin Learning:**  
+-> [01. Introduction to Git and GitHub](01.%20Introduction%20to%20Git%20and%20GitHub.md)
