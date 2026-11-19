@@ -1,0 +1,51 @@
+name: 🐛 Bug / Error Report
+description: Report an inaccurate command, broken link, or technical problem in the guide.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue and keep Zero-to-GitHero accurate!
+  - type: input
+    id: guide_file
+    attributes:
+      label: Guide File / Section
+      description: Which file or section contains the issue? (e.g., `Git Commands Explained.md` or Section 4)
+      placeholder: "e.g. Git Commands Explained.md"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Problem
+      description: Explain what is wrong or inaccurate.
+      placeholder: "The command syntax for X fails with error Y on Windows PowerShell..."
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System / Shell
+      description: What platform did you test this on?
+      options:
+        - Windows (PowerShell)
+        - Windows (Git Bash)
+        - Windows (CMD)
+        - macOS (Terminal / zsh)
+        - Linux (bash / zsh)
+        - Other / Web only
+    validations:
+      required: true
+  - type: input
+    id: git_version
+    attributes:
+      label: Git Version
+      description: Run `git --version` and paste the output.
+      placeholder: "git version 2.45.0.windows.1"
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: Suggested Fix (Optional)
+      description: Do you know how to correct this?
+
